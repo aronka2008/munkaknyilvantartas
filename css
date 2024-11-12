@@ -1,0 +1,198 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+.card-container {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px; /* 3D perspektíva */
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* 3D hatás */
+  transition: transform 0.6s ease-in-out; /* sima animáció */
+}
+
+.card:hover {
+  transform: rotateY(180deg); /* 180 fokos forgatás az Y tengely mentén */
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* A másik oldal elrejtése */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.card-front {
+  background-color: #f0f0f0;
+}
+
+.card-front img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card-back {
+  background-color: #cccccc;
+  transform: rotateY(180deg); /* Alapértelmezett forgatás a hátsó oldalhoz */
+  text-align: center;
+}
+
+.card-back a {
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.card-container {
+  width: calc(33.333% - 20px); /* 3 kártya egy sorban, figyelembe véve a gap-et */
+  height: 400px;
+  margin-bottom: 20px; /* Alsó margó a kártyák között */
+}
+
+@media (max-width: 900px) {
+  .card-container {
+    width: calc(50% - 20px); /* Kisebb kijelzők esetén 2 kártya egy sorban */
+  }
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    width: 100%; /* Legkisebb kijelzők esetén 1 kártya egy sorban */
+  }
+}
+
+/* Popup ablak alapbeállítása (nem látható) */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Átlátszó fekete háttér */
+}
+
+/* Popup megjelenik, ha a linkre kattintva aktiválódik a #popup */
+.popup:target {
+  display: block;
+}
+
+.popup-content {
+  position: relative;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+}
+
+.popup-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.popup-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Bezáró gomb (X) stílusa */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.popup-btn {
+  display: inline-block;
+  background-color: #077eee; /* Zöld szín */
+  color: white;
+  padding: 10px 20px; /* Kicsit nagyobb margók a hosszabb szöveghez */
+  font-size: 24px; /* Kisebb, de még olvasható betűméret */
+  text-decoration: none;
+  border-radius: 25px; /* Lekerekített gomb */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Finom árnyék */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Simított átmenetek */
+}
+
+.popup-btn:hover {
+  background-color: #090df5; /* Sötétebb zöld hover állapotban */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Kicsit mélyebb árnyék hover állapotban */
+}
+
+
+
+/* Popup ablak alapstílusai maradnak */
+
+.bio-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.bio-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 0%;
+  margin-right: 20px;
+}
+
+.bio-text {
+  text-align: left;
+}
+
+.bio-text h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.bio-text p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #666;
+}
